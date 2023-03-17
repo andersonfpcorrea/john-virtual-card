@@ -18,9 +18,7 @@ describe("Unit tests for Details component", () => {
     expect(header).toHaveTextContent("Hello, my name is");
     expect(heading).toHaveTextContent("My history");
     expect(text).toBeInTheDocument();
-    expect(githubBtn).toHaveAttribute("type", "button");
     expect(githubBtn).toHaveTextContent("Github");
-    expect(linkedinBtn).toHaveAttribute("type", "button");
     expect(linkedinBtn).toHaveTextContent("Linkedin");
 
     view.unmount();

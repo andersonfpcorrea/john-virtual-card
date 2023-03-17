@@ -8,6 +8,8 @@ import {
   layoutStyle,
   sectionStyle,
 } from "./style";
+import { useContext } from "react";
+import { Context } from "../../context";
 
 interface IDetailsProps {
   testId?: string;
@@ -18,6 +20,9 @@ const { Title } = Typography;
 
 export function Details({ testId = "" }: IDetailsProps): JSX.Element {
   const { name } = useParams();
+  const { name: nameFromStore, linkedin, github } = useContext(Context);
+  console.log(name, nameFromStore, linkedin, github);
+
   return (
     <Space
       data-testid={`details-${testId}`}
@@ -29,7 +34,7 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
           style={headerStyle}
           data-testid={`details-header-title-${testId}`}
         >
-          Hello, my name is <strong>{name}</strong>
+          Hello, my name is <strong>{name ?? nameFromStore}</strong>
         </Header>
         <Content style={contentStyle}>
           <Title data-testid={`details-content-heading-${testId}`}>
@@ -43,12 +48,16 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
               <Button
                 type="primary"
                 size="large"
+                htmlType="button"
+                href={github ?? ""}
                 data-testid={`details-button-github-${testId}`}
               >
                 Github
               </Button>
               <Button
                 size="large"
+                htmlType="button"
+                href={linkedin ?? ""}
                 data-testid={`details-button-linkedin-${testId}`}
               >
                 Linkedin
