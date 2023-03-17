@@ -1,8 +1,8 @@
 export interface IUseContextStore {
-  name?: string;
-  setName?: React.Dispatch<React.SetStateAction<string | undefined>>;
-  linkedin?: string;
-  setLinkedin?: React.Dispatch<React.SetStateAction<string | undefined>>;
-  github?: string;
-  setGithub?: React.Dispatch<React.SetStateAction<string | undefined>>;
+  name?: string | null;
+  setName?: React.Dispatch<React.SetStateAction<string | undefined | null>>;
+  linkedin?: string | null;
+  setLinkedin?: React.Dispatch<React.SetStateAction<string | undefined | null>>;
+  github?: string | null;
+  setGithub?: React.Dispatch<React.SetStateAction<string | undefined | null>>;
 }

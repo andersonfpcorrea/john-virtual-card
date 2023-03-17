@@ -1,13 +1,21 @@
-import { useSearchParams } from "react-router-dom";
+import { useContext } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { Context } from "../../context";
 
 const nameSeparator = import.meta.env.VITE_NAME_SEPARATOR;
 
-export function Redirect(): JSX.Element {
+export function Redirect(): null {
+  const nav = useNavigate();
+  const { setName, setLinkedin, setGithub } = useContext(Context);
   const [params] = useSearchParams();
 
-  console.log(params.get("name")?.split(nameSeparator).join(" "));
-  console.log(params.get("linkedin"));
-  console.log(params.get("github"));
+  const name = params.get("name")?.split(nameSeparator).join(" ");
 
-  return <p>oi</p>;
+  setName?.(name);
+  setLinkedin?.(params.get("linkedin"));
+  setGithub?.(params.get("github"));
+
+  nav(`/${name ?? ""}`);
+
+  return null;
 }
