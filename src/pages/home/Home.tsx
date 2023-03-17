@@ -38,6 +38,7 @@ export function Home({ testId = "" }: IHomeProps): JSX.Element {
             size="large"
             type="text"
             name="name"
+            required
             data-testid={`home-input-name-${testId}`}
           />
           <Input
@@ -46,6 +47,7 @@ export function Home({ testId = "" }: IHomeProps): JSX.Element {
             size="large"
             type="text"
             name="linkedin"
+            required
             data-testid={`home-input-linkedin-${testId}`}
           />
           <Input
@@ -54,6 +56,7 @@ export function Home({ testId = "" }: IHomeProps): JSX.Element {
             size="large"
             type="text"
             name="github"
+            required
             data-testid={`home-input-github-${testId}`}
           />
         </Space>

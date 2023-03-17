@@ -1,12 +1,12 @@
 import { type IFormDataType } from "./createObjFromFormData";
 
-const space = import.meta.env.VITE_DIVIDER;
+const nameSeparator = import.meta.env.VITE_NAME_SEPARATOR;
 
 export const generateUrlFromFormData = (
   data: IFormDataType["qrcode"]
 ): string => {
   const { name, linkedin, github } = data;
-  const properName = name.split(" ").join(space);
+  const properName = name.split(" ").join(nameSeparator);
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  return `${baseUrl}/redirect?${properName}${space}${linkedin}${space}${github}`;
+  return `${baseUrl}/redirect?name=${properName}&linkedin=${linkedin}&github=${github}`;
 };
