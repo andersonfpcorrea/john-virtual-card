@@ -19,7 +19,7 @@ describe("Unit tests for Home component", () => {
     expect(name).toHaveAttribute("type", "text");
     expect(linkedin).toHaveAttribute("type", "text");
     expect(github).toHaveAttribute("type", "text");
-    expect(button).toHaveAttribute("type", "button");
+    expect(button).toHaveAttribute("type", "submit");
     expect(button).toHaveTextContent("Generate Image");
 
     view.unmount();

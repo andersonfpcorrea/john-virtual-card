@@ -21,7 +21,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["*.config.*"],
+  "ignorePatterns": ["*.config.*", "env.d.ts"],
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",

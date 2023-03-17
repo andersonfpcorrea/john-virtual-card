@@ -10,4 +10,7 @@ export const router = createBrowserRouter([
     path: "/:name",
     element: <Details />,
   },
+  {
+    path: "/redirect?",
+  },
 ]);
