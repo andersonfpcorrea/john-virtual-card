@@ -10,6 +10,7 @@ import {
 } from "./style";
 import { useContext } from "react";
 import { Context } from "../../context";
+import { getAllFromSessionStorage } from "../../utils";
 
 interface IDetailsProps {
   testId?: string;
@@ -19,9 +20,13 @@ const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
 export function Details({ testId = "" }: IDetailsProps): JSX.Element {
-  const { name } = useParams();
-  const { name: nameFromStore, linkedin, github } = useContext(Context);
-  console.log(name, nameFromStore, linkedin, github);
+  const { name, linkedin, github } = getAllFromSessionStorage();
+  const { name: nameFromParams } = useParams();
+  const {
+    name: nameFromStore,
+    linkedin: linkedinFromStore,
+    github: githubFromStore,
+  } = useContext(Context);
 
   return (
     <Space
@@ -34,7 +39,8 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
           style={headerStyle}
           data-testid={`details-header-title-${testId}`}
         >
-          Hello, my name is <strong>{name ?? nameFromStore}</strong>
+          Hello, my name is{" "}
+          <strong>{name ?? nameFromParams ?? nameFromStore ?? "..."}</strong>
         </Header>
         <Content style={contentStyle}>
           <Title data-testid={`details-content-heading-${testId}`}>
@@ -49,7 +55,8 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
                 type="primary"
                 size="large"
                 htmlType="button"
-                href={github ?? ""}
+                href={github ?? githubFromStore ?? ""}
+                target="_blank"
                 data-testid={`details-button-github-${testId}`}
               >
                 Github
@@ -57,7 +64,8 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
               <Button
                 size="large"
                 htmlType="button"
-                href={linkedin ?? ""}
+                href={linkedin ?? linkedinFromStore ?? ""}
+                target="_blank"
                 data-testid={`details-button-linkedin-${testId}`}
               >
                 Linkedin
