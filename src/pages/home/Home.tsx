@@ -6,7 +6,12 @@ interface IHomeProps {
 
 export function Home({ testId = "" }: IHomeProps): JSX.Element {
   return (
-    <Space direction="vertical" size="large" data-testid={`home-${testId}`}>
+    <Space
+      direction="vertical"
+      size="large"
+      data-testid={`home-${testId}`}
+      style={{ padding: "3rem 4rem" }}
+    >
       <Typography.Title data-testid={`home-title-${testId}`}>
         QR Code Image Generator
       </Typography.Title>
