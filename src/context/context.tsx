@@ -1,9 +1,13 @@
 import { createContext } from "react";
+import { type IUseContextStore } from "./interfaces";
 
-const initialStore = {
+const initialStore: IUseContextStore = {
   name: "",
   linkedin: "",
   github: "",
+  setName: undefined,
+  setLinkedin: undefined,
+  setGithub: undefined,
 };
 
 export const Context =
