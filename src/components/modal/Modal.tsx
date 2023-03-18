@@ -9,6 +9,7 @@ interface IModalProps {
   name: string;
   isModalOpen: boolean;
   handleCancel: () => void;
+  testId?: string;
 }
 
 export function Modal({
@@ -16,6 +17,7 @@ export function Modal({
   name,
   isModalOpen,
   handleCancel,
+  testId = "",
 }: IModalProps): JSX.Element {
   const { handleDownload, anchorRef, canvasRef, svgRef } =
     useDownloadModal(handleCancel);
@@ -25,6 +27,7 @@ export function Modal({
       onOk={handleDownload}
       onCancel={handleCancel}
       okText="Download"
+      data-testid={`modal-${testId}`}
     >
       <Space
         direction="vertical"
@@ -37,14 +40,21 @@ export function Modal({
           <DownloadOutlined
             onClick={handleDownload}
             style={{ fontSize: "1rem" }}
+            data-testid={`modal-download-icon-${testId}`}
           />
         </Space>
-        <Typography>{name}</Typography>
+        <Typography data-testid={`modal-name-${testId}`}>{name}</Typography>
         <Space direction="vertical" size="middle">
-          <Typography>Scan me</Typography>
+          <Typography data-testid={`modal-scanme-${testId}`}>
+            Scan me
+          </Typography>
           <a ref={anchorRef}>
             <Canvas ref={canvasRef}>
-              <QRCode value={value} ref={svgRef} />
+              <QRCode
+                value={value}
+                ref={svgRef}
+                testId={`modal-qrcode-${testId}`}
+              />
             </Canvas>
           </a>
         </Space>
