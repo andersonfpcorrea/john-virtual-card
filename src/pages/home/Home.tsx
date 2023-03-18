@@ -1,36 +1,14 @@
 import { Button, Input, Space, Typography } from "antd";
-import { useState } from "react";
-import { createObjFromFormEntries, generateUrlFromFormData } from "../../utils";
 import { Modal } from "../../components";
+import { useQrCode } from "../../hooks/useQrCode";
 
 interface IHomeProps {
   testId?: string;
 }
 
 export function Home({ testId = "" }: IHomeProps): JSX.Element {
-  const [value, setValue] = useState<string | undefined>(undefined);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalOk = (): void => {
-    setIsModalOpen(false);
-  };
-  const handleModalCancel = (): void => {
-    setIsModalOpen(false);
-  };
-
-  const showModal = (): void => {
-    setIsModalOpen(true);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    const formData = createObjFromFormEntries<"qrcode">(e.currentTarget);
-    const url = generateUrlFromFormData(formData);
-    console.log("URL:", url);
-    setValue(url);
-    showModal();
-  };
-
+  const { handleSubmit, handleModalOk, handleModalCancel, isModalOpen, value } =
+    useQrCode();
   return (
     <form onSubmit={handleSubmit}>
       <Space
