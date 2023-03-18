@@ -63,6 +63,14 @@ docker compose up --build
 
 After hitting `docker compose up --build`, a `nginx` server will be running on [localhost:5173](http://localhost:5173), serving the app.
 
+### Put the containers downs
+
+When you want to stop running the app:
+
+```
+docker compose down
+```
+
 ## Check the app live
 
 If you prefer, you can check the app on [Cloudflare](https://john-virtual-card.pages.dev)
