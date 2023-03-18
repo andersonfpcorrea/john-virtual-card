@@ -6,7 +6,7 @@ This is the app I built for John:
 
 ## Home page
 
-![image](https://user-images.githubusercontent.com/92505216/226087670-755a8ebb-1173-4548-9db2-d3fea16d6d10.png)
+![image](https://user-images.githubusercontent.com/92505216/226087893-446e0ba8-d880-476d-8d4c-24a42b360cf4.png)
 
 At home page John can type his details into the inputs (all are required), including name, Linkedin and Github urls.
 
