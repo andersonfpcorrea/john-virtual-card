@@ -18,7 +18,8 @@ export const useDownloadModal = ({
   const [jpgHref, setJpgHref] = useState("");
 
   const handleDownload = (): void => {
-    downloadQrCode(jpgHref, "qrcode.jpg", anchorRef);
+    // downloadQrCode(jpgHref, "qrcode.jpg", anchorRef);
+    downloadQrCode(jpgHref, "image.png", anchorRef);
     handleCancel();
   };
 
@@ -27,7 +28,8 @@ export const useDownloadModal = ({
     if (isSVG(clonedSvg)) {
       const { canvas } = drawQRCodeOnCanvas(clonedSvg, canvasRef);
       if (canvas !== undefined) {
-        setJpgHref(canvas.toDataURL("image/jpeg"));
+        // setJpgHref(canvas.toDataURL("image/jpeg"));
+        setJpgHref(canvas.toDataURL());
       }
     }
   }, []);
