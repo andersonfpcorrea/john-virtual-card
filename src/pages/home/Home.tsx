@@ -1,7 +1,7 @@
 import { Button, Input, Space, Typography } from "antd";
 import { useState } from "react";
 import { createObjFromFormEntries, generateUrlFromFormData } from "../../utils";
-import { QRCode } from "../../components";
+import { Modal } from "../../components";
 
 interface IHomeProps {
   testId?: string;
@@ -9,15 +9,26 @@ interface IHomeProps {
 
 export function Home({ testId = "" }: IHomeProps): JSX.Element {
   const [value, setValue] = useState<string | undefined>(undefined);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOk = (): void => {
+    setIsModalOpen(false);
+  };
+  const handleModalCancel = (): void => {
+    setIsModalOpen(false);
+  };
+
+  const showModal = (): void => {
+    setIsModalOpen(true);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const formData = createObjFromFormEntries<"qrcode">(e.currentTarget);
     const url = generateUrlFromFormData(formData);
-    console.log("FORM DATA:", formData);
     console.log("URL:", url);
-
     setValue(url);
+    showModal();
   };
 
   return (
@@ -68,7 +79,14 @@ export function Home({ testId = "" }: IHomeProps): JSX.Element {
         >
           Generate Image
         </Button>
-        {value === undefined ? null : <QRCode value={value} />}
+        {value === undefined ? null : (
+          <Modal
+            value={value}
+            isModalOpen={isModalOpen}
+            handleOk={handleModalOk}
+            handleCancel={handleModalCancel}
+          />
+        )}
       </Space>
     </form>
   );
