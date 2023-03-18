@@ -43,16 +43,16 @@ And that is it. Now he can just show that QR Code to whoever wants to know his d
 git clone git@github.com:andersonfpcorrea/john-virtual-card.git
 ```
 
-### Create a .env file
-
-```
-rename the file ".env.example" to ".env"
-```
-
 ### Change directory
 
 ```
 cd john-virtual-card
+```
+
+### Create a .env file
+
+```
+rename the file ".env.example" to ".env"
 ```
 
 ### Run Docker Compose
