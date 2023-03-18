@@ -6,7 +6,7 @@ This is the app I built for John:
 
 ## Home page
 
-IMAGE HERE
+![image](https://user-images.githubusercontent.com/92505216/226087670-755a8ebb-1173-4548-9db2-d3fea16d6d10.png)
 
 At home page John can type his details into the inputs (all are required), including name, Linkedin and Github urls.
 
@@ -14,18 +14,19 @@ Then by clicking "Generate Image" a modal window will be rendered, on which he w
 
 ## QR Code
 
-IMAGE 2
+![image](https://user-images.githubusercontent.com/92505216/226087680-afd0a72f-e725-468a-9a39-1feaa58a1c77.png)
 
 And that is it. Now he can just show that QR Code to whoever wants to know his details. This QR code will redirect everyone to another page of the website, on which all John's informations will be rendered in the screen.
 
 ## Details page
 
-IMAGE 3
+![image](https://user-images.githubusercontent.com/92505216/226087854-3d6bb76c-e2ba-4699-a4fd-ce9ebd1883d1.png)
 
 ## Technologies used
 
 - TypeScript
 - React
+- Ant Design
 - Vite (build)
 - ESLint
 - Vitest (unit tests)
