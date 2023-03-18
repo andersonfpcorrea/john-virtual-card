@@ -1,13 +1,13 @@
 import { Button, Input, Space, Typography } from "antd";
 import { Modal } from "../../components";
-import { useQrCode } from "../../hooks/useQrCode";
+import { useQrCode } from "../../hooks";
 
 interface IHomeProps {
   testId?: string;
 }
 
 export function Home({ testId = "" }: IHomeProps): JSX.Element {
-  const { handleSubmit, handleModalOk, handleModalCancel, isModalOpen, value } =
+  const { handleSubmit, handleModalCancel, isModalOpen, value, name } =
     useQrCode();
   return (
     <form onSubmit={handleSubmit}>
@@ -57,12 +57,12 @@ export function Home({ testId = "" }: IHomeProps): JSX.Element {
         >
           Generate Image
         </Button>
-        {value === undefined ? null : (
+        {value === undefined || name === undefined ? null : (
           <Modal
             value={value}
             isModalOpen={isModalOpen}
-            handleOk={handleModalOk}
             handleCancel={handleModalCancel}
+            name={name}
           />
         )}
       </Space>

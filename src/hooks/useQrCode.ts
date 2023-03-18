@@ -3,6 +3,7 @@ import { createObjFromFormEntries, generateUrlFromFormData } from "../utils";
 
 interface IUseQrCodeReturn {
   value?: string;
+  name?: string;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isModalOpen: boolean;
   handleModalOk: () => void;
@@ -11,6 +12,7 @@ interface IUseQrCodeReturn {
 
 export const useQrCode = (): IUseQrCodeReturn => {
   const [value, setValue] = useState<IUseQrCodeReturn["value"]>(undefined);
+  const [name, setName] = useState<IUseQrCodeReturn["name"]>(undefined);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOk = useCallback((): void => {
@@ -31,14 +33,16 @@ export const useQrCode = (): IUseQrCodeReturn => {
       const formData = createObjFromFormEntries<"qrcode">(e.currentTarget);
       const url = generateUrlFromFormData(formData);
       console.log("URL:", url);
+      setName(formData.name);
       setValue(url);
       showModal();
     },
-    [setValue, showModal]
+    [setValue, showModal, setName]
   );
 
   return {
     value,
+    name,
     handleSubmit,
     isModalOpen,
     handleModalOk,
