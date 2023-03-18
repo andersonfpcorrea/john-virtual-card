@@ -18,14 +18,12 @@ describe("Unit tests for Canvas component", () => {
       />
     );
     const modal = screen.getByTestId(`modal-${testId}`);
-    const downloadIcon = screen.getByTestId(`modal-download-icon-${testId}`);
     const name = screen.getByTestId(`modal-name-${testId}`);
     const scanme = screen.getByTestId(`modal-scanme-${testId}`);
     const qrcode = screen.getByTestId(`modal-qrcode-${testId}`);
 
     expect(modal).toBeInTheDocument();
     expect(modal).toBeInTheDocument();
-    expect(downloadIcon).toBeInTheDocument();
     expect(name).toHaveTextContent("John");
     expect(scanme).toBeInTheDocument();
     expect(qrcode).toBeInTheDocument();

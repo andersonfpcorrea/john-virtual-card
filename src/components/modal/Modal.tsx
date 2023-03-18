@@ -1,8 +1,7 @@
 import { Modal as AntDModal, Space, Typography } from "antd";
 import { QRCode } from "../qrcode";
 import { Canvas } from "../canvas";
-import { DownloadOutlined } from "@ant-design/icons";
-import { useDownloadModal } from "../../hooks";
+import { useQrModal } from "../../hooks";
 import { useRef } from "react";
 
 interface IModalProps {
@@ -23,18 +22,13 @@ export function Modal({
   const svgRef = useRef<SVGElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const anchorRef = useRef<HTMLAnchorElement | null>(null);
-  const { handleDownload } = useDownloadModal({
-    handleCancel,
-    anchorRef,
-    canvasRef,
-    svgRef,
-  });
+  useQrModal({ canvasRef, svgRef });
   return (
     <AntDModal
       open={isModalOpen}
-      onOk={handleDownload}
+      onOk={handleCancel}
       onCancel={handleCancel}
-      okText="Download"
+      okText="Ok"
       data-testid={`modal-${testId}`}
     >
       <Space
@@ -43,14 +37,6 @@ export function Modal({
         align="center"
         style={{ width: "100%" }}
       >
-        <Space size="middle">
-          <Typography>Download</Typography>
-          <DownloadOutlined
-            onClick={handleDownload}
-            style={{ fontSize: "1rem" }}
-            data-testid={`modal-download-icon-${testId}`}
-          />
-        </Space>
         <Typography.Title level={3} data-testid={`modal-name-${testId}`}>
           {name}
         </Typography.Title>

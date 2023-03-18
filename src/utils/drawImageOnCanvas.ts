@@ -2,7 +2,7 @@ export const drawQRCodeOnCanvas = (
   clonedSvg: SVGElement,
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
 ): { canvas: HTMLCanvasElement | undefined } => {
-  const csize = 320;
+  const csize = 256;
   const outerHtml = clonedSvg.outerHTML;
   const blob = new Blob([outerHtml], {
     type: "image/svg+xml;charset=utf-8",
@@ -19,7 +19,7 @@ export const drawQRCodeOnCanvas = (
       if (context !== null) {
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, csize, csize);
-        context.drawImage(img, 10, 10, 254, 254);
+        context.drawImage(img, 0, 0, csize, csize);
       }
     }
   };
