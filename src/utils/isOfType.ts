@@ -9,3 +9,6 @@ export const isReallyCanvasContext = (
 ): context is CanvasRenderingContext2D => {
   return (context as CanvasRenderingContext2D).fillStyle !== undefined;
 };
+
+export const isSVG = (el: Node | SVGElement | undefined): el is SVGElement =>
+  (el as SVGElement).outerHTML !== undefined;

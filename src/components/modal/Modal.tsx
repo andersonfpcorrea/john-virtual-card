@@ -1,10 +1,8 @@
 import { Modal as AntDModal, Space, Typography } from "antd";
 import { QRCode } from "../qrcode";
 import { Canvas } from "../canvas";
-import { useEffect, useRef, useState } from "react";
-import { drawQRCodeOnCanvas } from "../../utils";
-import { downloadQrCode } from "../../utils/downloadQrCode";
 import { DownloadOutlined } from "@ant-design/icons";
+import { useDownloadModal } from "../../hooks";
 
 interface IModalProps {
   value: string;
@@ -13,35 +11,14 @@ interface IModalProps {
   handleCancel: () => void;
 }
 
-const isSVG = (el: Node | SVGElement | undefined): el is SVGElement =>
-  (el as SVGElement).outerHTML !== undefined;
-
 export function Modal({
   value,
   name,
   isModalOpen,
   handleCancel,
 }: IModalProps): JSX.Element {
-  const [jpgHref, setJpgHref] = useState("");
-  const svgRef = useRef<SVGElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const anchorRef = useRef<HTMLAnchorElement | null>(null);
-
-  const handleDownload = (): void => {
-    downloadQrCode(jpgHref, "qrcode.jpg", anchorRef);
-    handleCancel();
-  };
-
-  useEffect(() => {
-    const clonedSvg = svgRef.current?.cloneNode(true);
-    if (isSVG(clonedSvg)) {
-      const { canvas } = drawQRCodeOnCanvas(clonedSvg, canvasRef);
-      if (canvas !== undefined) {
-        setJpgHref(canvas.toDataURL("image/jpg"));
-      }
-    }
-  }, []);
-
+  const { handleDownload, anchorRef, canvasRef, svgRef } =
+    useDownloadModal(handleCancel);
   return (
     <AntDModal
       open={isModalOpen}
