@@ -49,6 +49,12 @@ git clone git@github.com:andersonfpcorrea/john-virtual-card.git
 rename the file ".env.example" to ".env"
 ```
 
+### Change directory
+
+```
+cd john-virtual-card
+```
+
 ### Run Docker Compose
 
 ```
