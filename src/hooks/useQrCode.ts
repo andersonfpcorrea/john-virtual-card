@@ -32,7 +32,6 @@ export const useQrCode = (): IUseQrCodeReturn => {
       e.preventDefault();
       const formData = createObjFromFormEntries<"qrcode">(e.currentTarget);
       const url = generateUrlFromFormData(formData);
-      console.log("URL:", url);
       setName(formData.name);
       setValue(url);
       showModal();

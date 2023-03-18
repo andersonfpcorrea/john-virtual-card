@@ -51,11 +51,17 @@ export function Modal({
             data-testid={`modal-download-icon-${testId}`}
           />
         </Space>
-        <Typography data-testid={`modal-name-${testId}`}>{name}</Typography>
+        <Typography.Title level={3} data-testid={`modal-name-${testId}`}>
+          {name}
+        </Typography.Title>
         <Space direction="vertical" size="middle">
-          <Typography data-testid={`modal-scanme-${testId}`}>
+          <Typography.Title
+            level={4}
+            data-testid={`modal-scanme-${testId}`}
+            style={{ textAlign: "center" }}
+          >
             Scan me
-          </Typography>
+          </Typography.Title>
           <a ref={anchorRef}>
             <Canvas ref={canvasRef}>
               <QRCode

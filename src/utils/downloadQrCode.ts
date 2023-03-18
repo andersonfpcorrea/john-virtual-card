@@ -7,7 +7,6 @@ export const downloadQrCode = (
   if (link !== null) {
     link.download = fileName;
     link.href = href;
-    console.log(href);
     link.click();
   }
 };

@@ -9,7 +9,6 @@ export const drawQRCodeOnCanvas = (
   });
   const URL = window.URL;
   const blobURL = URL.createObjectURL(blob);
-  console.log(blobURL);
   const img = new Image();
   const canvas = canvasRef.current;
   img.onload = () => {
