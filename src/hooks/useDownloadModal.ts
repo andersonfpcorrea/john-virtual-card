@@ -18,7 +18,7 @@ export const useDownloadModal = ({
   const [jpgHref, setJpgHref] = useState("");
 
   const handleDownload = (): void => {
-    downloadQrCode(jpgHref, "qrcode.jpeg", anchorRef);
+    downloadQrCode(jpgHref, "qrcode.jpg", anchorRef);
     handleCancel();
   };
 
