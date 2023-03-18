@@ -3,6 +3,7 @@ import { QRCode } from "../qrcode";
 import { Canvas } from "../canvas";
 import { DownloadOutlined } from "@ant-design/icons";
 import { useDownloadModal } from "../../hooks";
+import { useRef } from "react";
 
 interface IModalProps {
   value: string;
@@ -19,8 +20,15 @@ export function Modal({
   handleCancel,
   testId = "",
 }: IModalProps): JSX.Element {
-  const { handleDownload, anchorRef, canvasRef, svgRef } =
-    useDownloadModal(handleCancel);
+  const svgRef = useRef<SVGElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const anchorRef = useRef<HTMLAnchorElement | null>(null);
+  const { handleDownload } = useDownloadModal({
+    handleCancel,
+    anchorRef,
+    canvasRef,
+    svgRef,
+  });
   return (
     <AntDModal
       open={isModalOpen}

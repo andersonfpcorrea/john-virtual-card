@@ -1,21 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { downloadQrCode } from "../utils/downloadQrCode";
 import { drawQRCodeOnCanvas, isSVG } from "../utils";
 
-interface IUseDownloadModalReturn {
-  handleDownload: () => void;
+interface IUseDownloadModal {
+  handleCancel: () => void;
   anchorRef: React.MutableRefObject<HTMLAnchorElement | null>;
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
   svgRef: React.MutableRefObject<SVGElement | null>;
 }
 
-export const useDownloadModal = (
-  handleCancel: () => void
-): IUseDownloadModalReturn => {
+export const useDownloadModal = ({
+  handleCancel,
+  anchorRef,
+  canvasRef,
+  svgRef,
+}: IUseDownloadModal): { handleDownload: () => void } => {
   const [jpgHref, setJpgHref] = useState("");
-  const svgRef = useRef<SVGElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const anchorRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleDownload = (): void => {
     downloadQrCode(jpgHref, "qrcode.jpg", anchorRef);
@@ -27,15 +27,12 @@ export const useDownloadModal = (
     if (isSVG(clonedSvg)) {
       const { canvas } = drawQRCodeOnCanvas(clonedSvg, canvasRef);
       if (canvas !== undefined) {
-        setJpgHref(canvas.toDataURL("image/jpg"));
+        setJpgHref(canvas.toDataURL("image/jpeg"));
       }
     }
   }, []);
 
   return {
     handleDownload,
-    anchorRef,
-    canvasRef,
-    svgRef,
   };
 };
