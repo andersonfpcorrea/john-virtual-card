@@ -6,10 +6,6 @@ import { Modal } from "./Modal";
 describe("Unit tests for Canvas component", () => {
   window.URL.createObjectURL = vi.fn();
 
-  afterEach(() => {
-    vi.resetAllMocks();
-  });
-
   test("It checks if all elements are rendered accordingly", () => {
     const testId = "1";
     const view = render(
