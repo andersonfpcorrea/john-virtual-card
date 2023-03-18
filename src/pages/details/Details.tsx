@@ -40,7 +40,7 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
           data-testid={`details-header-title-${testId}`}
         >
           Hello, my name is{" "}
-          <strong>{name ?? nameFromParams ?? nameFromStore ?? "..."}</strong>
+          <strong>{nameFromStore ?? nameFromParams ?? name ?? "..."}</strong>
         </Header>
         <Content style={contentStyle}>
           <Title data-testid={`details-content-heading-${testId}`}>
@@ -55,7 +55,7 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
                 type="primary"
                 size="large"
                 htmlType="button"
-                href={github ?? githubFromStore ?? ""}
+                href={githubFromStore ?? github ?? ""}
                 target="_blank"
                 data-testid={`details-button-github-${testId}`}
               >
@@ -64,7 +64,7 @@ export function Details({ testId = "" }: IDetailsProps): JSX.Element {
               <Button
                 size="large"
                 htmlType="button"
-                href={linkedin ?? linkedinFromStore ?? ""}
+                href={linkedinFromStore ?? linkedin ?? ""}
                 target="_blank"
                 data-testid={`details-button-linkedin-${testId}`}
               >
